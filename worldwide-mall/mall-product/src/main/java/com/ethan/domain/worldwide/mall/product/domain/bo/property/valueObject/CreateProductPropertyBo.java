@@ -2,8 +2,6 @@ package com.ethan.domain.worldwide.mall.product.domain.bo.property.valueObject;
 
 import lombok.Data;
 
-import java.util.List;
-
 /**
  * @Author zhenghui
  * @Description 创建商品规格值对象

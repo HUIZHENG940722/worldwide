@@ -1,1 +1,0 @@
-package com.ethan.domain.worldwide.mall.product.inters;

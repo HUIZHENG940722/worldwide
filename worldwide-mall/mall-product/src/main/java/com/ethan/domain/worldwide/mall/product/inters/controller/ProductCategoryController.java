@@ -1,4 +1,4 @@
-package com.ethan.domain.worldwide.mall.product.inters;
+package com.ethan.domain.worldwide.mall.product.inters.controller;
 
 import com.ethan.domain.worldwide.openapi.interfaces.api.MallProductCategoryApi;
 import com.ethan.domain.worldwide.openapi.interfaces.api.dto.CreateProductCategoryReq;
@@ -14,25 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ProductCategoryController implements MallProductCategoryApi {
-
-
     @Override
-    public ResponseEntity<Integer> createCategory(CreateProductCategoryReq createProductCategoryReq) {
+    public ResponseEntity<String> createCategory(CreateProductCategoryReq createProductCategoryReq) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Boolean> deleteCategory(Integer id) {
+    public ResponseEntity<Boolean> deleteCategory(String id) {
         return null;
     }
 
     @Override
-    public ResponseEntity<ProductCategoryRsp> getCategory(Integer id) {
+    public ResponseEntity<ProductCategoryRsp> getCategory(String id) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Boolean> updateCategory(UpdateProductCategoryReq updateProductCategoryReq) {
+    public ResponseEntity<Boolean> updateCategory(String id, UpdateProductCategoryReq updateProductCategoryReq) {
         return null;
     }
 }

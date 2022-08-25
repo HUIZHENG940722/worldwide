@@ -3,7 +3,6 @@ package com.ethan.domain.worldwide.mall.product.domain.bo.property;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @Author zhenghui

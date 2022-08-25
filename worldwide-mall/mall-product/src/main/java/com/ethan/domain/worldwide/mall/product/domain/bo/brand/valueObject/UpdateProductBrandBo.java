@@ -1,0 +1,42 @@
+package com.ethan.domain.worldwide.mall.product.domain.bo.brand.valueObject;
+
+import lombok.Data;
+
+/**
+ * @Author zhenghui
+ * @Description 更新商品品牌值对象
+ * @Date 2022/8/22
+ */
+@Data
+public class UpdateProductBrandBo {
+
+    /**
+     * 商品品牌名称
+     */
+    private String name;
+
+    /**
+     * 商品品牌链接
+     */
+    private String bannerUrl;
+
+    /**
+     * 排序
+     */
+    private Integer sort;
+
+    /**
+     * 品牌描述
+     */
+    private String description;
+
+    /**
+     * 更新者
+     */
+    private Long updatedBy;
+
+    /**
+     * 开启状态
+     */
+    private Integer status;
+}

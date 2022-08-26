@@ -9,6 +9,7 @@ mybatis-plus:
       logic-delete-value: 0
       logic-not-delete-value: 1
       logic-delete-field: deleted
+  type-enums-package: com.ethan.domain.worldwide.mall.product.infra.enums
 
 spring:
   application:

@@ -20,7 +20,7 @@ public class ProductCategoryPo {
     /**
      * 分类编码
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -56,37 +56,38 @@ public class ProductCategoryPo {
     /**
      * 创建时间
      */
-    @TableField(fill = FieldFill.INSERT)
+    @TableField
     private Date createdTime;
 
     /**
      * 更新时间
      */
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField
     private Date updatedTime;
 
     /**
      * 创建者
      */
-    @TableField(fill = FieldFill.INSERT)
+    @TableField
     private Long createdBy;
 
     /**
      * 更新者
      */
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField
     private Long updatedBy;
 
     /**
      * 是否删除
      */
-    @TableField(fill = FieldFill.INSERT)
+    @TableField
     @TableLogic
     private Integer deleted;
 
     /**
      * 开启状态
      */
-    @TableField(fill = FieldFill.INSERT)
+    @TableField
+    @EnumValue
     private StatusEnum status;
 }

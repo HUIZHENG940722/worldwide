@@ -3,6 +3,7 @@
 !src
 target
 !.gitignore
+!lombok.config
 HELP.md
 *.iml
 mvnw

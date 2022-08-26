@@ -16,14 +16,11 @@ import java.net.URI;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-class MallProductApplicationTests {
-
-    private MockMvc mockMvc;
+public class MallProductApplicationTests {
 
     @Autowired
-    public MallProductApplicationTests(MockMvc mockMvc) {
-        this.mockMvc = mockMvc;
-    }
+    private MockMvc mockMvc;
+
 
     @BeforeEach
     void setUp() {

@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS  `product_category`;
 create table product_category
 (
     created_time datetime      not null comment '创建时间',
@@ -14,6 +15,5 @@ create table product_category
     banner_url   varchar(255)  not null comment '分类图片链接',
     sort         int           not null comment '排序',
     description  varchar(255)  null comment '分类描述'
-)
-    comment '商品分类表';
+);
 

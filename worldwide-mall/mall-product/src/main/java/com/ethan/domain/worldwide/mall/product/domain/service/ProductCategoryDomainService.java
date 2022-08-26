@@ -1,11 +1,13 @@
 package com.ethan.domain.worldwide.mall.product.domain.service;
 
 import cn.hutool.core.util.StrUtil;
+import com.ethan.domain.worldwide.common.util.WorldwideExceptionUtil;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.ProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.CreateProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.UpdateProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.repository.ProductCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -89,7 +91,7 @@ public class ProductCategoryDomainService {
         checkId(id);
         // 1.2 校验是否存在子分类
         if (isExistChild(id)) {
-            throw new RuntimeException("存在子分类不允许删除");
+            WorldwideExceptionUtil.asserts(HttpStatus.CONFLICT, "存在子分类不允许删除");
         }
         // 2 核心业务
         return productCategoryRepository.deleteById(id);
@@ -105,7 +107,7 @@ public class ProductCategoryDomainService {
         if (parentId != 0) {
             ProductCategoryBo productCategoryBo = getById(parentId);
             if (productCategoryBo == null) {
-                throw new RuntimeException("商品父分类id无效");
+                WorldwideExceptionUtil.asserts(HttpStatus.NOT_FOUND, "商品父分类编码无效");
             }
         }
     }
@@ -131,7 +133,7 @@ public class ProductCategoryDomainService {
     private void checkId(Long id) {
         ProductCategoryBo productCategoryBo = getById(id);
         if (productCategoryBo == null) {
-            throw new RuntimeException("商品分类编码不存在");
+            WorldwideExceptionUtil.asserts(HttpStatus.NOT_FOUND, "商品分类编码不存在");
         }
     }
 
@@ -146,7 +148,7 @@ public class ProductCategoryDomainService {
         ProductCategoryBo byParentIdAndName = productCategoryRepository.getByParentIdAndName(parentId, name);
         if (byParentIdAndName != null && (id == null ||
             !id.equals(byParentIdAndName.getId()))) {
-            throw new RuntimeException("商品分类名称重复");
+            WorldwideExceptionUtil.asserts(HttpStatus.CONFLICT, "商品分类名称重复");
         }
     }
 }

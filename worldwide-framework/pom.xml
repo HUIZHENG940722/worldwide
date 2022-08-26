@@ -15,6 +15,7 @@
 
     <modules>
         <module>openapi-worldwide</module>
+        <module>common-worldwide</module>
     </modules>
 
     <properties>

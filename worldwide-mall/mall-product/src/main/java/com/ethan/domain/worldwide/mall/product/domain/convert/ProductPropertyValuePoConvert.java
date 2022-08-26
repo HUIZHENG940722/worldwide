@@ -35,7 +35,8 @@ public interface ProductPropertyValuePoConvert {
         @Mapping(target = "propertyId", ignore = true),
         @Mapping(target = "createTime", ignore = true),
         @Mapping(target = "updateTime", expression = "java(new Date(System.currentTimeMillis()))"),
-        @Mapping(target = "createdBy", ignore = true)
+        @Mapping(target = "createdBy", ignore = true),
+        @Mapping(target = "deleted", ignore = true)
     })
     ProductPropertyValuePo updateToPo(UpdateProductPropertyValueBo updateProductPropertyValueBo);
     ProductPropertyValueBo toBo(ProductPropertyValuePo productPropertyValuePo);

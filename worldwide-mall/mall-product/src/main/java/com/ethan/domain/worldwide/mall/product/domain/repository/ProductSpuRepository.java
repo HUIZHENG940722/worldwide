@@ -61,9 +61,10 @@ public class ProductSpuRepository {
     }
 
 
-    public ProductSpuBo getByCategoryIdAndName(Long categoryId, String name) {
+    public ProductSpuBo getByCategoryIdAndBrandIdAndName(Long categoryId, Long brandId, String name) {
         LambdaQueryWrapper<ProductSpuPo> lambdaQueryWrapper = getLambdaQueryWrapper();
         lambdaQueryWrapper.eq(ProductSpuPo::getCategoryId, categoryId);
+        lambdaQueryWrapper.eq(ProductSpuPo::getBrandId, brandId);
         lambdaQueryWrapper.eq(ProductSpuPo::getName, name);
         List<ProductSpuPo> productSpuPos;
         try {
@@ -71,7 +72,7 @@ public class ProductSpuRepository {
         } catch (Exception e) {
             throw new RuntimeException("查询商品SPU数据异常");
         }
-        return ProductSpuPoConvert.INSTANCE.toBO(productSpuPos);
+        return productSpuPos.size() > 0 ? ProductSpuPoConvert.INSTANCE.toBO(productSpuPos.get(0)) : null;
     }
 
     public Boolean deleteById(Long id) {

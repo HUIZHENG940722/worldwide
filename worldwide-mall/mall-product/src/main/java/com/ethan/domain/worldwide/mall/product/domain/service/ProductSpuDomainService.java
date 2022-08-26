@@ -57,7 +57,7 @@ public class ProductSpuDomainService {
         // 1.2 校验商品品牌是否存在
         checkBrandId(createProductSpuBo.getBrandId());
         // 1.1 校验商品SPU名称是否重复
-        checkName(null, createProductSpuBo.getCategoryId(), createProductSpuBo.getName());
+        checkName(null, createProductSpuBo.getCategoryId(), createProductSpuBo.getBrandId(), createProductSpuBo.getName());
         // 2 核心业务
         // 2.1 创建商品SPU
         return productSpuRepository.add(createProductSpuBo);
@@ -76,7 +76,7 @@ public class ProductSpuDomainService {
         // 1 核心校验
         // 1.1 校验商品SPU名称是否重复
         if (StrUtil.isNotBlank(updateProductSpuBo.getName())) {
-            checkName(productSpuBo, productSpuBo.getCategoryId(), updateProductSpuBo.getName());
+            checkName(productSpuBo, productSpuBo.getCategoryId(), productSpuBo.getBrandId(), updateProductSpuBo.getName());
         }
         // 2 核心业务
         // 2.1 更新商品SPU
@@ -145,8 +145,8 @@ public class ProductSpuDomainService {
      * @param categoryId
      * @param name
      */
-    private void checkName(ProductSpuBo productSpuBo, Long categoryId, String name) {
-        ProductSpuBo byCategoryIdAndName = productSpuRepository.getByCategoryIdAndName(categoryId, name);
+    private void checkName(ProductSpuBo productSpuBo, Long categoryId, Long brandId, String name) {
+        ProductSpuBo byCategoryIdAndName = productSpuRepository.getByCategoryIdAndBrandIdAndName(categoryId, brandId, name);
         if (byCategoryIdAndName == null || (productSpuBo == null && !productSpuBo.getId().equals(byCategoryIdAndName.getId()))) {
             throw new RuntimeException("商品SPU名称重复");
         }

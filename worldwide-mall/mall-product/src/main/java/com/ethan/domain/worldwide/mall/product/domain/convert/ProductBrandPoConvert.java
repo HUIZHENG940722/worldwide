@@ -30,7 +30,6 @@ public interface ProductBrandPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
-        @Mapping(target = "categoryId", ignore = true),
         @Mapping(target = "createTime", ignore = true),
         @Mapping(target = "updateTime", expression = "java(new Date(System.currentTimeMillis()))"),
         @Mapping(target = "createdBy", ignore = true),

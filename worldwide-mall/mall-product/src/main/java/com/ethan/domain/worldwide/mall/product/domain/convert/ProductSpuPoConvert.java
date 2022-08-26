@@ -26,7 +26,7 @@ public interface ProductSpuPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
-        @Mapping(target = "picUrls", qualifiedByName = "listToString"),
+        @Mapping(target = "picUrls", source = "picUrls", qualifiedByName = "listToString"),
         @Mapping(target = "createTime", expression = "java(new Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", ignore = true),
         @Mapping(target = "updatedBy", ignore = true),
@@ -37,7 +37,8 @@ public interface ProductSpuPoConvert {
     @Mappings({
         @Mapping(target = "id", ignore = true),
         @Mapping(target = "categoryId", ignore = true),
-        @Mapping(target = "picUrls", qualifiedByName = "listToString"),
+        @Mapping(target = "brandId", ignore = true),
+        @Mapping(target = "picUrls", source = "picUrls", qualifiedByName = "listToString"),
         @Mapping(target = "createTime", ignore = true),
         @Mapping(target = "updateTime", expression = "java(new Date(System.currentTimeMillis()))"),
         @Mapping(target = "createdBy", ignore = true),
@@ -46,22 +47,22 @@ public interface ProductSpuPoConvert {
     ProductSpuPo updateToPo(UpdateProductSpuBo updateProductSpuBo);
 
     @Mappings({
-        @Mapping(target = "picUrls", qualifiedByName = "stringToList")
+        @Mapping(target = "picUrls", source = "picUrls", qualifiedByName = "stringToList")
     })
-    ProductSpuBo toBO(List<ProductSpuPo> productSpuPos);
+    List<ProductSpuBo> toBO(List<ProductSpuPo> productSpuPos);
 
     @Mappings({
-        @Mapping(target = "picUrls", qualifiedByName = "stringToList")
+        @Mapping(target = "picUrls", source = "picUrls", qualifiedByName = "stringToList")
     })
     ProductSpuBo toBO(ProductSpuPo productSpuPo);
 
     @Named(value = "listToString")
     default String listToString(List<String> list) {
-        return StrUtil.join(",", list);
+        return list.size() > 0 ? StrUtil.join(",", list) : null;
     }
 
     @Named(value = "stringToList")
     default List<String> stringToList(String str) {
-        return Arrays.asList(str.split(","));
+        return StrUtil.isNotBlank(str) ? Arrays.asList(str.split(",")) : null;
     }
 }

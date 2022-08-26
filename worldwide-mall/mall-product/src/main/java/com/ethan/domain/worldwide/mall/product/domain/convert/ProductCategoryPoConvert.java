@@ -22,7 +22,7 @@ public interface ProductCategoryPoConvert {
 
     @Mappings({
         @Mapping(target = "id", ignore = true),
-        @Mapping(target = "createTime", expression = "java(new Date(System.currentTimeMillis()))"),
+        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "updateTime", ignore = true),
         @Mapping(target = "updatedBy", ignore = true),
         @Mapping(target = "deleted", expression = "java(1)")
@@ -33,7 +33,7 @@ public interface ProductCategoryPoConvert {
         @Mapping(target = "id", ignore = true),
         @Mapping(target = "parentId", ignore = true),
         @Mapping(target = "createTime", ignore = true),
-        @Mapping(target = "updateTime", expression = "java(new Date(System.currentTimeMillis()))"),
+        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "createdBy", ignore = true),
         @Mapping(target = "deleted", ignore = true)
     })

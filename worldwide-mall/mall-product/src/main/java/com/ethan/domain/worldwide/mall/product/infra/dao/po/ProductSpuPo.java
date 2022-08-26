@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 import lombok.ToString;
 
@@ -109,5 +110,5 @@ public class ProductSpuPo {
      * 开启状态
      */
     @TableField(fill = FieldFill.INSERT)
-    private Integer status;
+    private StatusEnum status;
 }

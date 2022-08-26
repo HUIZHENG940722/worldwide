@@ -1,6 +1,7 @@
 package com.ethan.domain.worldwide.mall.product.infra.dao.po;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 import lombok.ToString;
 
@@ -67,5 +68,5 @@ public class ProductPropertyValuePo {
      * 开启状态
      */
     @TableField(fill = FieldFill.INSERT)
-    private Integer status;
+    private StatusEnum status;
 }

@@ -1,5 +1,6 @@
 package com.ethan.domain.worldwide.mall.product.domain.bo.brand.valueObject;
 
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 
 /**
@@ -38,5 +39,5 @@ public class UpdateProductBrandBo {
     /**
      * 开启状态
      */
-    private Integer status;
+    private StatusEnum status;
 }

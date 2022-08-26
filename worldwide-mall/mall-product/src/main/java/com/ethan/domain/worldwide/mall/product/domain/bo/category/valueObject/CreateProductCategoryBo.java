@@ -1,5 +1,6 @@
 package com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject;
 
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 import lombok.ToString;
 
@@ -52,5 +53,5 @@ public class CreateProductCategoryBo {
     /**
      * 开启状态
      */
-    private Integer status;
+    private StatusEnum status;
 }

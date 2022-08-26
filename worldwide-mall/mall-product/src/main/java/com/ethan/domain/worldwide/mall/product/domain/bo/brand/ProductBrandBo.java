@@ -1,5 +1,6 @@
 package com.ethan.domain.worldwide.mall.product.domain.bo.brand;
 
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -60,5 +61,5 @@ public class ProductBrandBo {
     /**
      * 开启状态
      */
-    private Integer status;
+    private StatusEnum status;
 }

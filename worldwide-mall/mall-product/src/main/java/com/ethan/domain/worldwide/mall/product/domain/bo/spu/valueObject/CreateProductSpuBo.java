@@ -1,5 +1,6 @@
 package com.ethan.domain.worldwide.mall.product.domain.bo.spu.valueObject;
 
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 
 import java.util.List;
@@ -70,5 +71,5 @@ public class CreateProductSpuBo {
     /**
      * 开启状态
      */
-    private Integer status;
+    private StatusEnum status;
 }

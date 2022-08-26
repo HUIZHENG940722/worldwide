@@ -1,5 +1,6 @@
 package com.ethan.domain.worldwide.mall.product.domain.bo.property.valueObject;
 
+import com.ethan.domain.worldwide.mall.product.infra.enums.StatusEnum;
 import lombok.Data;
 
 /**
@@ -28,5 +29,5 @@ public class CreateProductPropertyValueBo {
     /**
      * 开启状态
      */
-    private Integer status;
+    private StatusEnum status;
 }

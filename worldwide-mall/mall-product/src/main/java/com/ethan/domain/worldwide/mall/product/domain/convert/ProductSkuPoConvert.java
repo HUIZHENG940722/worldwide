@@ -24,8 +24,8 @@ public interface ProductSkuPoConvert {
     @Mappings({
         @Mapping(target = "id", ignore = true),
         @Mapping(target = "spuId", ignore = true),
-        @Mapping(target = "createTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
-        @Mapping(target = "updateTime", ignore = true),
+        @Mapping(target = "createdTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "updatedTime", ignore = true),
         @Mapping(target = "updatedBy", ignore = true),
         @Mapping(target = "deleted", ignore = true)
     })
@@ -35,8 +35,8 @@ public interface ProductSkuPoConvert {
     @Mappings({
         @Mapping(target = "id", ignore = true),
         @Mapping(target = "spuId", ignore = true),
-        @Mapping(target = "createTime", ignore = true),
-        @Mapping(target = "updateTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
+        @Mapping(target = "createdTime", ignore = true),
+        @Mapping(target = "updatedTime", expression = "java(new java.util.Date(System.currentTimeMillis()))"),
         @Mapping(target = "createdBy", ignore = true),
         @Mapping(target = "deleted", expression = "java(1)")
     })

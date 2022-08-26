@@ -62,13 +62,13 @@ public class ProductSkuPo {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
+    private Date createdTime;
 
     /**
      * 更新时间
      */
     @TableField(fill = FieldFill.UPDATE)
-    private Date updateTime;
+    private Date updatedTime;
 
     /**
      * 创建者

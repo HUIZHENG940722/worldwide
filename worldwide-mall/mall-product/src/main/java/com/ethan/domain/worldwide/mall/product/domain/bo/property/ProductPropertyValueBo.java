@@ -31,12 +31,12 @@ public class ProductPropertyValueBo {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private Date createdTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private Date updatedTime;
 
     /**
      * 创建者

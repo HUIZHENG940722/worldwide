@@ -1,13 +1,18 @@
 package com.ethan.domain.worldwide.mall.product.inters.convert;
 
+import cn.hutool.core.date.DateUtil;
+import com.ethan.domain.worldwide.mall.product.domain.bo.category.ProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.CreateProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.UpdateProductCategoryBo;
 import com.ethan.domain.worldwide.openapi.interfaces.api.dto.CreateProductCategoryReq;
+import com.ethan.domain.worldwide.openapi.interfaces.api.dto.ProductCategoryRsp;
 import com.ethan.domain.worldwide.openapi.interfaces.api.dto.UpdateProductCategoryReq;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
+
+import java.util.Date;
 
 /**
  * @Author zhenghui
@@ -29,4 +34,10 @@ public interface ProductCategoryDtoConvert {
         @Mapping(target = "updatedBy", ignore = true)
     })
     UpdateProductCategoryBo toUpdate(UpdateProductCategoryReq updateProductCategoryReq);
+
+    ProductCategoryRsp toDto(ProductCategoryBo productCategoryBo);
+
+    default String dateToString(Date date) {
+        return DateUtil.format(date, "yyyy-MM-dd hh:mm:ss");
+    }
 }

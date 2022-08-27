@@ -18,6 +18,8 @@ public class ProductCategoryTests extends MallProductApplicationTests {
 
     private static final String UPDATE_PRODUCT_CATEGORY = String.format("/product/category/{id}");
 
+    private static final String GET_PRODUCT_CATEGORY = String.format("/product/category/{id}");
+
     private static String categoryId;
 
     @Test
@@ -60,6 +62,18 @@ public class ProductCategoryTests extends MallProductApplicationTests {
         UpdateProductCategoryReq updateProductCategoryReq = updateSuccessDTO();
         updateProductCategoryReq.setName("笔记本");
         put(UPDATE_PRODUCT_CATEGORY.replace("{id}", categoryId), updateProductCategoryReq).andExpect(MockMvcResultMatchers.status().isConflict());
+    }
+
+    @Test
+    @Order(value = 7)
+    public void getSuccess() throws Exception {
+        get(GET_PRODUCT_CATEGORY.replace("{id}", categoryId)).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    @Order(value = 8)
+    public void getFailWhenIdIllegal() throws Exception {
+        get(GET_PRODUCT_CATEGORY.replace("{id}", "100")).andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
 

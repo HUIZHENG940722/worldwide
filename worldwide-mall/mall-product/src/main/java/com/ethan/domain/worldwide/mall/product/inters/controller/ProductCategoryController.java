@@ -1,6 +1,7 @@
 package com.ethan.domain.worldwide.mall.product.inters.controller;
 
 import com.ethan.domain.worldwide.mall.product.application.service.ProductCategoryService;
+import com.ethan.domain.worldwide.mall.product.domain.bo.category.ProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.CreateProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.UpdateProductCategoryBo;
 import com.ethan.domain.worldwide.mall.product.inters.convert.ProductCategoryDtoConvert;
@@ -50,8 +51,10 @@ public class ProductCategoryController implements MallProductCategoryApi {
     public ResponseEntity<ProductCategoryRsp> getCategory(String id) {
         // 1 数据转换
         // 2 业务逻辑
+        ProductCategoryBo productCategoryBo = productCategoryService.getById(id);
         // 3 返回结果
-        return null;
+        ProductCategoryRsp productCategoryRsp = ProductCategoryDtoConvert.INSTANCE.toDto(productCategoryBo);
+        return new ResponseEntity<>(productCategoryRsp, HttpStatus.OK);
     }
 
     @Override

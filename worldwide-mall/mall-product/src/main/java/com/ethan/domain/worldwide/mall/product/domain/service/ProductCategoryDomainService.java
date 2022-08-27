@@ -78,6 +78,17 @@ public class ProductCategoryDomainService {
         // 3 返回结果
     }
 
+    public ProductCategoryBo getOrErrorById(Long id) {
+        // 1 核心校验
+        ProductCategoryBo byId = productCategoryRepository.getById(id);
+        if (byId == null) {
+            WorldwideExceptionUtil.asserts(HttpStatus.NOT_FOUND, "商品分类编码无效");
+        }
+        // 2 核心业务
+        return byId;
+        // 3 返回结果
+    }
+
     /**
      * 删除商品分类
      *

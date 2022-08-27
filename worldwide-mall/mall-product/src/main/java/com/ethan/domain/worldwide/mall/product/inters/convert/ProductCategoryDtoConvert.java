@@ -1,7 +1,9 @@
 package com.ethan.domain.worldwide.mall.product.inters.convert;
 
 import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.CreateProductCategoryBo;
+import com.ethan.domain.worldwide.mall.product.domain.bo.category.valueObject.UpdateProductCategoryBo;
 import com.ethan.domain.worldwide.openapi.interfaces.api.dto.CreateProductCategoryReq;
+import com.ethan.domain.worldwide.openapi.interfaces.api.dto.UpdateProductCategoryReq;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -22,4 +24,9 @@ public interface ProductCategoryDtoConvert {
         @Mapping(target = "createdBy", ignore = true)
     })
     CreateProductCategoryBo toCreateBo(CreateProductCategoryReq createProductCategoryReq);
+
+    @Mappings({
+        @Mapping(target = "updatedBy", ignore = true)
+    })
+    UpdateProductCategoryBo toUpdate(UpdateProductCategoryReq updateProductCategoryReq);
 }

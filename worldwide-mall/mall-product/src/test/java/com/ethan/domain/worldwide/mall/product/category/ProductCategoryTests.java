@@ -20,7 +20,10 @@ public class ProductCategoryTests extends MallProductApplicationTests {
 
     private static final String GET_PRODUCT_CATEGORY = String.format("/product/category/{id}");
 
-    private static String categoryId;
+
+    private static final String DELETE_PRODUCT_CATEGORY = String.format("/product/category/{id}");
+
+    private static String categoryId, categoryId2;
 
     @Test
     @Order(value = 1)
@@ -34,30 +37,44 @@ public class ProductCategoryTests extends MallProductApplicationTests {
     @Order(value = 2)
     public void createSuccess2() throws Exception {
         CreateProductCategoryReq successDTO = createSuccessDTO();
+        successDTO.setParentId(categoryId);
+        successDTO.setName("华为手机");
+        String id = post(CREATE_PRODUCT_CATEGORY, successDTO).andExpect(MockMvcResultMatchers.status().isCreated()).andReturn().getResponse().getContentAsString();
+        categoryId2 = id;
+        Assertions.assertNotNull(id);
+    }
+
+    @Test
+    @Order(value = 3)
+    public void createSuccess3() throws Exception {
+        CreateProductCategoryReq successDTO = createSuccessDTO();
         successDTO.setName("笔记本");
         post(CREATE_PRODUCT_CATEGORY, successDTO).andExpect(MockMvcResultMatchers.status().isCreated());
     }
 
     @Test
-    @Order(value = 3)
+    @Order(value = 4)
     public void createFailWhenParentIdIllegal() throws Exception {
-        post(CREATE_PRODUCT_CATEGORY, createFailDTOWhenParentIdIllegal()).andExpect(MockMvcResultMatchers.status().isNotFound());
+        CreateProductCategoryReq successDTO = createSuccessDTO();
+        successDTO.setParentId("100");
+        successDTO.setName("电脑");
+        post(CREATE_PRODUCT_CATEGORY, successDTO).andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
     @Test
-    @Order(value = 4)
+    @Order(value = 5)
     public void createFailWhenNameRepeat() throws Exception {
         post(CREATE_PRODUCT_CATEGORY, createSuccessDTO()).andExpect(MockMvcResultMatchers.status().isConflict());
     }
 
     @Test
-    @Order(value = 5)
+    @Order(value = 6)
     public void updateSuccess() throws Exception {
         put(UPDATE_PRODUCT_CATEGORY.replace("{id}", categoryId), updateSuccessDTO()).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
-    @Order(value = 6)
+    @Order(value = 7)
     public void updateFailWhenNameRepeat() throws Exception {
         UpdateProductCategoryReq updateProductCategoryReq = updateSuccessDTO();
         updateProductCategoryReq.setName("笔记本");
@@ -65,15 +82,27 @@ public class ProductCategoryTests extends MallProductApplicationTests {
     }
 
     @Test
-    @Order(value = 7)
+    @Order(value = 8)
     public void getSuccess() throws Exception {
         get(GET_PRODUCT_CATEGORY.replace("{id}", categoryId)).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
-    @Order(value = 8)
+    @Order(value = 9)
     public void getFailWhenIdIllegal() throws Exception {
         get(GET_PRODUCT_CATEGORY.replace("{id}", "100")).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    @Order(value = 10)
+    public void deleteFailWhenExistChild() throws Exception {
+        del(DELETE_PRODUCT_CATEGORY.replace("{id}", categoryId)).andExpect(MockMvcResultMatchers.status().isConflict());
+    }
+
+    @Test
+    @Order(value = 11)
+    public void deleteSuccess() throws Exception {
+        del(DELETE_PRODUCT_CATEGORY.replace("{id}", categoryId2)).andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
 
@@ -89,18 +118,6 @@ public class ProductCategoryTests extends MallProductApplicationTests {
         return createProductCategoryReq;
     }
 
-
-    private CreateProductCategoryReq createFailDTOWhenParentIdIllegal() {
-        CreateProductCategoryReq createProductCategoryReq = new CreateProductCategoryReq();
-        createProductCategoryReq.setParentId("100");
-        createProductCategoryReq.setName("电脑");
-        createProductCategoryReq.setIcon("http://dummyimage.com/100x100");
-        createProductCategoryReq.setBannerUrl("http://mwxulyl.st/jzpwi");
-        createProductCategoryReq.setSort(1);
-        createProductCategoryReq.setStatus(CreateProductCategoryReq.StatusEnum.NUMBER_1);
-        createProductCategoryReq.setDescription("几乎每个人都要用的");
-        return createProductCategoryReq;
-    }
 
     private UpdateProductCategoryReq updateSuccessDTO() {
         UpdateProductCategoryReq updateProductCategoryReq = new UpdateProductCategoryReq();

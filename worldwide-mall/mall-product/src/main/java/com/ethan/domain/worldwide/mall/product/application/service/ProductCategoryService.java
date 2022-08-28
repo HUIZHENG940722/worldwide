@@ -56,4 +56,14 @@ public class ProductCategoryService {
         // 2 业务逻辑
         // 3 返回结果
     }
+
+    public Boolean deleteById(String id) {
+        // 1.1 当前用户是否能访问实例
+        // TODO: 2022/8/27 目前没有构件用户体系，所以暂时不实现
+        // 1.2 判断实例是否存在
+        productCategoryDomainService.getOrErrorById(Long.parseLong(id));
+        // 2 业务逻辑
+        return productCategoryDomainService.deleteById(Long.parseLong(id));
+        // 3 返回结果
+    }
 }

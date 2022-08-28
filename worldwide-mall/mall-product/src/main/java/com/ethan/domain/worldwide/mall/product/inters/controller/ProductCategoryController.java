@@ -43,8 +43,9 @@ public class ProductCategoryController implements MallProductCategoryApi {
     public ResponseEntity<Boolean> deleteCategory(String id) {
         // 1 数据转换
         // 2 业务逻辑
+        Boolean delete = productCategoryService.deleteById(id);
         // 3 返回结果
-        return null;
+        return new ResponseEntity<>(delete, HttpStatus.NO_CONTENT);
     }
 
     @Override

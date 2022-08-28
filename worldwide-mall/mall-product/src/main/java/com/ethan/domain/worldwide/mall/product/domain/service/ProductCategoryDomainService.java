@@ -80,12 +80,9 @@ public class ProductCategoryDomainService {
 
     public ProductCategoryBo getOrErrorById(Long id) {
         // 1 核心校验
-        ProductCategoryBo byId = productCategoryRepository.getById(id);
-        if (byId == null) {
-            WorldwideExceptionUtil.asserts(HttpStatus.NOT_FOUND, "商品分类编码无效");
-        }
+        ProductCategoryBo productCategoryBo = checkId(id);
         // 2 核心业务
-        return byId;
+        return productCategoryBo;
         // 3 返回结果
     }
 
@@ -98,9 +95,7 @@ public class ProductCategoryDomainService {
     @Transactional
     public Boolean deleteById(Long id) {
         // 1 核心校验
-        // 1.1 校验分类是否存在
-        checkId(id);
-        // 1.2 校验是否存在子分类
+        // 1.1 校验是否存在子分类
         if (isExistChild(id)) {
             WorldwideExceptionUtil.asserts(HttpStatus.CONFLICT, "存在子分类不允许删除");
         }
@@ -141,11 +136,12 @@ public class ProductCategoryDomainService {
      *
      * @param id
      */
-    private void checkId(Long id) {
+    private ProductCategoryBo checkId(Long id) {
         ProductCategoryBo productCategoryBo = getById(id);
         if (productCategoryBo == null) {
             WorldwideExceptionUtil.asserts(HttpStatus.NOT_FOUND, "商品分类编码不存在");
         }
+        return productCategoryBo;
     }
 
     /**

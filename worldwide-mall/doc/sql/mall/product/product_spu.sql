@@ -17,7 +17,9 @@ create table product_spu
     sort         int           not null comment '排序',
     like_count   int default 0 not null comment '点赞初始人数',
     price        int           not null comment '商品价格',
-    quantity     int           not null comment '库存数量'
+    quantity     int           not null comment '库存数量',
+    constraint category_brand_name
+        unique (category_id, brand_id, name)
 )
     comment '商品SPU表';
 

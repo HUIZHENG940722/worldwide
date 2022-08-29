@@ -8,8 +8,10 @@ create table product_property_value
     status       int default 1 not null comment '开启状态;0->禁用;1->启用;',
     id           bigint        not null comment '规格值编码'
         primary key,
-    propety_id   bigint        not null comment '规格编码',
-    name         varchar(90)   not null comment '规格值名称'
+    property_id   bigint        not null comment '规格编码',
+    name         varchar(90)   not null comment '规格值名称',
+    constraint property_value
+        unique (property_id, name)
 )
     comment '商品规格值表';
 

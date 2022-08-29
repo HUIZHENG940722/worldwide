@@ -14,7 +14,9 @@ create table product_sku
     original_price int           not null comment '原价;单位：分',
     cost_price     int           not null comment '成本价;单位：分',
     bar_code       varchar(255)  null comment '条形码',
-    pic_url        varchar(255)  not null comment '图片地址'
+    pic_url        varchar(255)  not null comment '图片地址',
+    constraint spu_sku
+        unique (spu_id, id)
 )
     comment '商品SKU表';
 

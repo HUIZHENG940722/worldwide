@@ -13,7 +13,9 @@ create table product_category
     icon         varchar(255)  null comment '分类图标',
     banner_url   varchar(255)  not null comment '分类图片链接',
     sort         int           not null comment '排序',
-    description  varchar(255)  null comment '分类描述'
+    description  varchar(255)  null comment '分类描述',
+    constraint parentId_name
+        unique (parent_id, name)
 )
     comment '商品分类表';
 

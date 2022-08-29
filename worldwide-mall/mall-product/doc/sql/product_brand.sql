@@ -11,7 +11,9 @@ create table product_brand
     name         varchar(90)   not null comment '品牌名称',
     banner_url   varchar(255)  not null comment '品牌图片链接',
     sort         int           not null comment '排序',
-    description  varchar(255)  null comment '品牌描述'
+    description  varchar(255)  null comment '品牌描述',
+    constraint name
+        unique (name)
 )
     comment '商品品牌表';
 

@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
  * @Date 2022/8/26
  */
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
-public class ProductCategoryTests extends MallProductApplicationTests {
+public class ProductCategoryControllerTests extends MallProductApplicationTests {
 
     private static final String CREATE_PRODUCT_CATEGORY = String.format("/product/category");
 

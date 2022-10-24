@@ -72,6 +72,14 @@ public class ProductBrandDomainService {
         // 3 返回结果
     }
 
+    public ProductBrandBo getOrErrorById(Long id) {
+        ProductBrandBo byId = productBrandRepository.getById(id);
+        if (byId == null) {
+            throw new RuntimeException("商品品牌编码无效");
+        }
+        return byId;
+    }
+
     /**
      * 删除商品品牌
      *
@@ -81,19 +89,11 @@ public class ProductBrandDomainService {
     @Transactional
     public Boolean deleteById(Long id) {
         // 1 核心校验
-        // 1.1 校验商品品牌是否存在
-        checkId(id);
         // 2 核心业务
         return productBrandRepository.deleteById(id);
         // 3 返回结果
     }
 
-    private void checkId(Long id) {
-        ProductBrandBo byId = productBrandRepository.getById(id);
-        if (byId == null) {
-            throw new RuntimeException("商品品牌编码无效");
-        }
-    }
 
     /**
      * 校验商品品牌名称是否重复
